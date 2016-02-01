@@ -1,0 +1,114 @@
+  
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+body {
+	background-color: #026873;
+background-image: linear-gradient(90deg, rgba(255,255,255,.07) 50%, transparent 50%),
+linear-gradient(90deg, rgba(255,255,255,.13) 50%, transparent 50%),
+linear-gradient(90deg, transparent 50%, rgba(255,255,255,.17) 50%),
+linear-gradient(90deg, transparent 50%, rgba(255,255,255,.19) 50%);
+background-size: 13px, 29px, 37px, 53px;
+height: 100%;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    text-align: center;
+
+}
+
+.message-label {
+	color: red;
+}
+.button { background: #3366CC ;
+   color: #00BFFF;
+    padding: 5px; 
+    border-radius: 10px; 
+    width: 100px;
+     margin: 0 auto 0 auto; 
+    vertical-align: middle;
+     cursor:pointer;
+     
+    }
+    .form {
+    text-align: center;
+    }
+    
+   .ButtonStyle{
+	background: #2e8ce3;
+	padding: 7px 30px;
+  	font-size:13px;
+	font-weight: bold;
+	color:#fff;
+	text-align: center;  
+	border:solid 1px #73c8f0;
+	border-radius: 5px;
+	background: -moz-linear-gradient(0% 100% 90deg,#2e8ce3, #73c2fd);
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#73c2fd), to(#2e8ce3));
+	box-shadow: inset 0 1px 0 0 #fff;
+	-moz-box-shadow: inset 0 1px 0 0 #fff;
+	-webkit-box-shadow: inset 0 1px 0 0 #fff;
+	border-bottom-color:#196ebb;
+	text-shadow: 0 -1px 0 #196ebb;
+}
+
+ 
+
+    
+
+
+html {
+    overflow: auto;
+    height: 100%; 
+}
+
+
+
+html > body .container {
+    height: auto;
+    min-height: 100%;
+   
+}
+
+* html .container {
+    height: 100%;
+    
+}
+
+.container {
+    position: relative;
+    
+}
+
+.header {
+    height: 1.8em;
+    width:100%;font-size:36px;background-color:navy;color:white;text-align: center
+}
+
+.footer {
+    height: 1.5em;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width:100%;font-size:18px;background-color:navy;color:white;text-align: right
+}
+
+.content {
+	
+	 margin: auto;
+    padding-bottom: 3em;
+     text-align: center;
+     font-size:25px;   
+    
+}
+.textinput {
+	
+	// margin-top: 20%;
+    padding-bottom: 10px;
+     text-align: left;
+     align: left;
+     font-size:18px;   
+}

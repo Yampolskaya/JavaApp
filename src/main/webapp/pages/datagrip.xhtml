@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:a4j="http://richfaces.org/a4j"
+      xmlns:rich="http://richfaces.org/rich">
+
+<ui:composition template="/template/basic.xhtml">
+<ui:define name="content">
+
+      
+  
+    <h:form>
+    
+       <rich:modalPanel  id="mp" minHeight="200" minWidth="450" 
+            height="200" width="500" showWhenRendered="#{rowContr.showModalPanel}">
+            <f:facet name="controls">
+               <h:commandButton action="#{rowContr.closeModalPanel}" value="x" onclick="#{rich:component('mp')}.hide()"></h:commandButton>
+        </f:facet>
+            <h:outputText value=" Please select just one row to be edited."></h:outputText>
+        </rich:modalPanel>
+    
+    
+    
+        <rich:dataTable value="#{rowContr.rows}" var="row" width="706px" columnClasses="center"
+        rows="15" reRender="ds">
+        
+            <f:facet name="header">
+                <h:outputText value="Data Table"/>
+            </f:facet>
+            
+            <rich:column sortBy="#{row.selected}"> 
+                <f:facet name="header">
+                    <h:outputText value="Select"/>
+                </f:facet>
+                <h:selectBooleanCheckbox value="#{row.selected}" /> 
+            </rich:column>
+            
+   
+           
+            <rich:column sortBy="#{row.integer_}"> 
+                <f:facet name="header">
+                    <h:outputText value="integer"/>
+                </f:facet>
+                <h:outputText value="#{row.integer_}"/>
+            </rich:column>
+            
+             
+            <rich:column sortBy="#{row.double_}">
+                <f:facet name="header">
+                    <h:outputText value="double"/>
+                </f:facet>
+                <h:outputText value="#{row.double_}"/> 
+            </rich:column>
+           
+            <rich:column sortBy="#{row.date_}">  
+            <f:facet name="header">   
+                    <h:outputText value="Date"/>  
+                </f:facet>
+                <h:outputText value="#{row.date_.time}">
+                <f:convertDateTime type="date" timeStyle="short" /> 
+                </h:outputText>
+            </rich:column>
+            
+            <rich:column sortBy="#{row.date_}">
+            <f:facet name="header">     
+                    <h:outputText value="Time"/>   
+                </f:facet>
+                <h:outputText value="#{row.time_.time}">
+                <f:convertDateTime pattern="HH:mm"/>
+                 </h:outputText>
+            </rich:column>
+            
+            
+            
+            <rich:column sortBy="#{row.varchar_}">    
+            <f:facet name="header"> 
+                    <h:outputText value="Varchar_"/>
+                </f:facet>
+                <h:outputText value="#{row.varchar_}"/> 
+            </rich:column>
+            
+              
+            <rich:column sortBy="#{row.char_}">   
+            <f:facet name="header">  
+                    <h:outputText value="Char_"/>
+                </f:facet>
+                <h:outputText value="#{row.char_}"/> 
+            </rich:column>
+            
+            <rich:column sortBy="#{row.clob_}">   
+            <f:facet name="header">  
+                    <h:outputText value="Clob_"/>
+                </f:facet>
+                <h:outputText value="#{row.clob_}"/> 
+            </rich:column>
+            
+            <f:facet name="footer">
+                <rich:datascroller id="ds"></rich:datascroller>
+                
+            </f:facet>
+        </rich:dataTable>
+       
+       
+                <h:commandButton action="#{rowContr.doRefresh}" value="refresh"></h:commandButton>
+                <h:commandButton action="#{rowContr.doEdit}" value="edit"></h:commandButton>
+                <h:commandButton action="#{rowContr.doDelete}" value="delete"></h:commandButton>
+                
+
+    </h:form>
+    
+
+</ui:define>
+</ui:composition>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:a4j="http://richfaces.org/a4j"
+      xmlns:rich="http://richfaces.org/rich">
+
+<ui:composition template="/template/basic.xhtml">
+<ui:define name="content" >
+
+
+      
+  
+    <h:form styleClass="container">
+   
+     <h:panelGrid columns="3" styleClass="content">
+    <h3>INTEGER</h3>
+      <h:inputText id="integer" value="#{rowContr.integer_}" styleClass="textinput" />
+      <h:message for="integer" styleClass="message-label"/>
+      <h3>DOUBLE</h3>
+      <h:inputText id="double" value="#{rowContr.double_}"/>
+      <h:message for="double" styleClass="message-label"/>
+      <h3>DATE</h3>
+       <h:panelGrid id="panel" columns="2" columnClasses="ecol1, ecol2">
+            <a4j:outputPanel id="calendar" layout="block">
+                    <rich:calendar value="#{rowContr.date_}"
+                        locale="#{rowContr.locale}"
+                        popup="true"
+                        timeZone="#{rowContr.timeZone}"
+                        datePattern="dd/M/yy"
+                        showApplyButton="false" cellWidth="24px" cellHeight="22px" style="width:200px">
+                        <f:convertDateTime pattern="dd/M/yy" />
+                        </rich:calendar> 
+            </a4j:outputPanel>
+            
+     </h:panelGrid>
+       <h:message for="panel" styleClass="message-label"/>
+     
+      <h3>TIME</h3>
+      <h:inputText id="time" value="#{rowContr.time_}"  >
+      <f:convertDateTime pattern="HH:mm"/>
+        </h:inputText>
+      <h:message for="time" styleClass="message-label"/>
+      
+      <h3>VARCHAR</h3>
+      <h:inputText id="varchar" value="#{rowContr.varchar_}">
+      <f:validateLength maximum="252" />
+      </h:inputText>
+      <h:message for="varchar" styleClass="message-label"/>
+      <h3>CHAR</h3>
+      <h:inputText id="char" value="#{rowContr.char_}">
+      <f:validateLength maximum="50" />
+      </h:inputText>
+      <h:message for="char" styleClass="message-label"/>
+      <h3>CLOB</h3>
+      <h:inputText id="clob" value="#{rowContr.clob_}"/>
+      <h:message for="clob" styleClass="message-label"/>
+       </h:panelGrid>
+     
+        <h:commandButton  action="#{rowContr.doSave}" value="#{rowContr.name_button}" styleClass="ButtonStyle"></h:commandButton>
+        <h:commandButton action="#{rowContr.doRefreshString}" value="Cancel" immediate="true" styleClass="button"></h:commandButton>
+       
+    </h:form>
+    
+
+</ui:define>
+</ui:composition>
+</html>

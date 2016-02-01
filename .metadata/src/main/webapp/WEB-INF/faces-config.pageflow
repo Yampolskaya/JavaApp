@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf13888368360290" configfile="/HomeTask/src/main/webapp/WEB-INF/faces-config.xml">
+  <nodes xsi:type="pageflow:PFPage" name="pages/datagrip.xhtml" x="108" y="48" id="pf13893021257010" referenceLink="//@navigationRule.1/@navigationCase.0/@toViewId|" outlinks="pf13893021257411" inlinks="pf13893792650130" path="/pages/datagrip.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/edit_save_page.xhtml" x="444" y="48" id="pf13893021257412" referenceLink="//@navigationRule.1/@fromViewId|" outlinks="pf13893792650130" inlinks="pf13893021257411" path="/pages/edit_save_page.xhtml"/>
+  <links id="pf13893021257411" target="pf13893021257412" source="pf13893021257010" outcome="Edit" redirect="true"/>
+  <links id="pf13893792650130" target="pf13893021257010" source="pf13893021257412" outcome="refresh" redirect="true"/>
+</pageflow:Pageflow>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:flow="http://www.springframework.org/schema/webflow-config"
+	xmlns:lang="http://www.springframework.org/schema/lang"
+	xmlns:osgi="http://www.springframework.org/schema/osgi"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+          http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+          http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+          http://www.springframework.org/schema/webflow-config http://www.springframework.org/schema/webflow-config/spring-webflow-config-2.0.xsd
+          http://www.springframework.org/schema/lang http://www.springframework.org/schema/lang/spring-lang-3.0.xsd
+          http://www.springframework.org/schema/osgi http://www.springframework.org/schema/osgi/spring-osgi-3.0.xsd
+          http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+          http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd
+          http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd">
+  
+ <jdbc:initialize-database data-source="dataSource">
+  <jdbc:script location="/WEB-INF/classes/META-INF/DBscripts/schema.sql"/>
+  
+  <jdbc:script location="/WEB-INF/classes/META-INF/DBscripts/testData.sql"/>
+ 
+</jdbc:initialize-database>
+
+        <context:annotation-config />
+        <context:component-scan base-package="com.homeTask" />
+       
+     <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <property name="persistenceXmlLocation" value="/WEB-INF/classes/META-INF/persistence.xml" />
+        <property name="jpaVendorAdapter">
+            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+                <property name="showSql" value="true" />
+                <property name="generateDdl" value="false" />
+                <property name="databasePlatform" value="org.hibernate.dialect.HSQLDialect" />
+                
+            </bean>
+        </property>
+        
+        <!--  
+        <property name="jpaPropertyMap">
+			<map>
+				<entry key="hibernate.show_sql" value="true" />
+				<entry key="hibernate.connection.url" value="jdbc:hsqldb:file:/1/HomeTaskdb"/>
+			</map>
+		</property>
+		-->
+    </bean>
+
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="org.hsqldb.jdbcDriver" />
+        
+        <property name="url" value="jdbc:hsqldb:file:#{systemProperties['webroot']}WEB-INF/classes/META-INF/DB/db"/>
+        
+         <!-- 
+        <property name="url" value="jdbc:hsqldb:mem:test"/>
+         -->
+        <property name="username" value="sa" />
+        <property name="password" value="" />
+       
+    </bean>
+
+
+        <tx:annotation-driven />
+    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactory" />
+    </bean>
+    
+   
+      <!-- 
+<jdbc:embedded-database id="dataSource" type="HSQL">
+ <jdbc:script location="/WEB-INF/classes/META-INF/DBscripts/schema.sql"/>
+        <jdbc:script location="WEB-INF/classes/META-INF/DBscripts/testData.sql"/>
+	</jdbc:embedded-database>
+	  -->
+	
+</beans>
